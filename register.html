@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Voting System - Registration</title>
+    <link rel="stylesheet" href="css/stylesheet1.css">
+</head>
+<body>
+    <div id="headerSection">
+        <h1>Online Voting System</h1>
+        <hr>
+    </div>
+
+    <h2>Registration</h2>
+    <form action="../onlineevm/api/register.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <div id="bodySection">
+            <label for="role">Select role:</label>
+            <select id="role" name="role" onchange="updatePlaceholder()" required>
+                <option value="" disabled selected hidden>Choose your role</option>
+                <option value="Voter">Voter</option>
+                <option value="Group">Group</option>
+            </select><br><br>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Full Name (e.g., John Doe)" required>
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" name="mobile" placeholder="10-digit (e.g. 9876543210)"
+                   pattern="^(?!.*(\d)\1{9})[6-9]\d{9}$"
+                   title="Enter a valid 10-digit mobile number that doesn't repeat all digits"
+                   minlength="10" maxlength="10" inputmode="numeric" required><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" 
+                   placeholder="At least 8 characters" pattern=".{8,}" 
+                   title="Password must be at least 8 characters long" required>
+
+            <label for="cpassword">Confirm Password:</label>
+            <input type="password" id="cpassword" name="cpassword" 
+                   placeholder="Re-enter your password" required><br><br>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Your current residential address" required><br><br>
+
+            <label for="photo">Upload image:</label>
+            <input type="file" id="photo" name="photo" accept="image/*" required><br><br>
+
+            <button type="submit">Register</button><br><br>
+        </div>
+        Already a user? <a href="index.html">Login here</a>
+    </form>
+
+    <script>
+        function updatePlaceholder() {
+            const role = document.getElementById("role").value;
+            const nameInput = document.getElementById("name");
+            if (role === "1") {
+                nameInput.placeholder = "Full Name (e.g., John Doe)";
+            } else if (role === "2") {
+                nameInput.placeholder = "Group Name (e.g., Youth Alliance)";
+            }
+        }
+
+        function validateForm() {
+            const role = document.getElementById('role').value;
+            const password = document.getElementById('password').value;
+            const cpassword = document.getElementById('cpassword').value;
+
+            if (!role) {
+                alert('Please select a role');
+                return false;
+            }
+            if (password !== cpassword) {
+                alert('Passwords do not match');
+                return false;
+            }
+            return true;
+        }
+
+        // Optional: Image size validation
+        document.getElementById('photo').addEventListener('change', function () {
+            const file = this.files[0];
+            if (file && file.size > 2 * 1024 * 1024) {
+                alert('Image size should not exceed 2MB.');
+                this.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
