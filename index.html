@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Voting System</title>
+    <link rel="stylesheet" href="css/stylesheet.css">
+</head>
+<body>
+    <div id="headerSection">
+        <h1>Online Voting System</h1>
+        <hr>
+    </div>
+
+    <div id="bodySection">
+        <form action="../onlineevm/api/login.php" method="POST">
+            <h2>Login</h2>
+            <input type="tel" name="mobile" placeholder="Enter Mobile Number"
+                   pattern="^(?!.*(\d)\1{9})[6-9]\d{9}$"
+                   title="Enter a valid 10-digit mobile number that doesn't have all digits the same"
+                   minlength="10" maxlength="10" inputmode="numeric" required><br><br>
+
+            <input type="password" name="password" placeholder="Enter password"
+                   pattern=".{8,}" title="Password must be at least 8 characters long" required><br><br>
+
+            <select id="role" name="role" required>
+                <option value="" disabled selected hidden>Select a role</option>
+                <option value="Voter">Voter</option>
+                <option value="Group">Group</option>
+            </select><br><br>
+
+            <button id="loginbtn" type="submit">Login</button><br><br>
+            New user? <a href="register.html">Register here</a>
+        </form>
+    </div>
+</body>
+</html>
