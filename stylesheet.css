@@ -1,0 +1,31 @@
+body {
+    text-align: center;
+    background-color: #50afc9;
+}
+
+#headerSection {
+    padding: 5px;
+}
+
+* {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+input {
+    padding: 15px;
+    border-radius: 10px;
+}
+
+#role {
+    padding:10px;
+    border-radius:10px;
+    width: 10%;
+}
+
+button{
+    padding:10px;
+    font-size:15px;
+    background-color: #56f754;
+    color: rgb(237, 9, 13);
+    border-radius: 10px;
+}
